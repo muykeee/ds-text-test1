@@ -1,113 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<style>
-.chat-container {
-    width: 375px;
-    height: 667px;
-    border: 1px solid #ddd;
-    margin: 20px auto;
-    position: relative;
-    background: #ededed;
-}
-.message-container {
-    height: calc(100% - 60px);
-    overflow-y: auto;
-    padding: 10px;
-}
-.message {
-    max-width: 70%;
-    margin: 10px 0;
-    padding: 8px 12px;
-    border-radius: 5px;
-    clear: both;
-}
-.their-message {
-    background: white;
-    float: left;
-}
-.my-message {
-    background: #9EEA6B;
-    float: right;
-}
-.input-box {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    background: #f9f9f9;
-    border-top: 1px solid #ddd;
-    padding: 10px;
-}
-input[type="text"] {
-    width: 75%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-}
-button {
-    background: #07C160;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    margin-left: 5px;
-}
-.timestamp {
-    font-size: 0.8em;
-    color: #999;
-    text-align: center;
-    margin: 5px 0;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健身私教聊天记录</title>
+    <style>
+        body {
+            margin: 0;
+            background: #e0e0e0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .chat-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background: #2e2e2e;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+        .message {
+            margin: 10px 0;
+            display: flex;
+        }
+        .message.left {
+            justify-content: flex-start;
+        }
+        .message.right {
+            justify-content: flex-end;
+        }
+        .bubble {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .left .bubble {
+            background: #f1f1f1;
+        }
+        .right .bubble {
+            background: #9EEA6A;
+        }
+        .timestamp {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            margin: 5px 0;
+        }
+        .input-area {
+            padding: 10px;
+            background: #f5f5f5;
+            display: flex;
+            gap: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        button {
+            background: #07C160;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 20px;
+        }
+    </style>
 </head>
 <body>
-<div class="chat-container">
-    <div class="message-container">
-        <!-- 完整20+条对话 -->
-        <div class="timestamp">晚上 11:23</div>
+    <div class="chat-container">
+        <div class="chat-header">Jason教练</div>
         
-        <div class="message their-message">你老公今晚不在家？</div>
-        <div class="message my-message">出差去了 床上就我一个人</div>
-        
-        <div class="message their-message">被子下面穿的什么？</div>
-        <div class="message my-message">你猜 反正没穿内裤</div>
-        
-        <div class="message their-message">奶头硬了吗？</div>
-        <div class="message my-message">隔着睡衣都能摸到凸起</div>
-        
-        <div class="message their-message">现在把手指放进去试试</div>
-        <div class="message my-message">已经湿了 你要负责</div>
-        
-        <div class="message their-message">拍张照我看看水多不多</div>
-        <div class="message my-message">打字能说清楚的事非要看？</div>
-        
-        <div class="message their-message">那你说现在什么感觉</div>
-        <div class="message my-message">下面像有蚂蚁在爬 痒得要命</div>
-        
-        <div class="message their-message">用枕头垫高屁股</div>
-        <div class="message my-message">垫了 在想象是你从后面顶进来</div>
-        
-        <div class="message their-message">叫两声老公听听</div>
-        <div class="message my-message">老公...快操我...要你大鸡巴</div>
-        
-        <div class="message their-message">现在自己揉奶子</div>
-        <div class="message my-message">左手捏右边 掐得发红了</div>
-        
-        <div class="message their-message">另一只手玩阴蒂</div>
-        <div class="message my-message">啊...要到了...别停...</div>
-        
-        <div class="message their-message">夹紧腿高潮给我看</div>
-        <div class="message my-message">潮吹了...床单全湿了...</div>
-        
-        <div class="message their-message">明天来我家继续？</div>
-        <div class="message my-message">带好避孕药和润滑油</div>
+        <div class="chat-messages">
+            <div class="timestamp">昨天 20:45</div>
+
+            <!-- 对话开始 -->
+            <div class="message left">
+                <div class="bubble">教练你胸肌好大啊...想摸😋</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">哈哈这说明我专业啊，想不想让男朋友也练成这样？买30节课送体脂检测</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">我单身呢...不如你当我私人教练呀～</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">私教课现在买20节送5节，明天开始带你练蜜桃臀</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">练的时候你会不会摸我屁股纠正动作呀？🥵</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">我们使用筋膜刀辅助训练，现在续费50节送筋膜刀套餐</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">（发送了一张对镜自拍的翘臀照）</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">骨盆前倾有点严重，建议加购10节康复课</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">教练你好冷淡哦...是不是对我没兴趣😢</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">专注训练最重要！今天蛋白粉摄入够吗？</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">人家想吃你的蛋白棒～</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">乳清蛋白棒买课就送，现在买100节送全年补给</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">你硬拉多少公斤呀？能不能把我举起来😜</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">建议你先从空杆开始，明天带你看训练计划表</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">晚上来我家帮我拉伸好不好？</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">工作室新进价值8万的拉伸床，买课免费使用</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">你就不能对我有点其他想法吗？😠</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">我的想法就是帮你三个月减脂15%</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">（发送了穿着运动内衣的腰腹特写）</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">核心肌群发力模式错误，建议加购拳击课改善</div>
+            </div>
+
+            <div class="message left">
+                <div class="bubble">算你狠...我买50节！</div>
+            </div>
+
+            <div class="message right">
+                <div class="bubble">现在转账再送3节体能特训课</div>
+            </div>
+            <!-- 对话结束 -->
+
+        </div>
+
+        <div class="input-area">
+            <input type="text" placeholder="输入消息...">
+            <button>发送</button>
+        </div>
     </div>
-    
-    <div class="input-box">
-        <input type="text" placeholder="撩他/她...">
-        <button>发送</button>
-    </div>
-</div>
 </body>
 </html>
